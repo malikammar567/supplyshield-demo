@@ -1,4 +1,4 @@
-# SupplyShield public recruiter demo
+[# SupplyShield public recruiter demo
 
 This separate interface contains fictional ClearDesk and Beacon data only. Visitors follow Baseline → Disruption → Responses → Verified optimizer → Free Analyst. It has no company upload controls, provider selector, credentials, account system or arbitrary JSON editor. The complete local workspace remains available through `python3 launch.py`.
 
@@ -60,3 +60,4 @@ Use Tab/Shift+Tab and keyboard activation to navigate labeled controls. Charts h
 Before sharing the URL: switch both companies; verify default numbers above; test zero loss; submit an invalid late-start/four-week duration and expect an actionable error; compare at 95%; open the saved optimizer; explain its current result; download reports; confirm there is no upload, API key, local-model or hosted-provider control. Never put private company data or keys in this repository.
 
 Free hosting may sleep, restart or slow under traffic. Cache/session state can disappear and must not be treated as persistent storage. Anonymous visitors cannot start solvers, but all other calculations still use server resources. This is a public portfolio demo with no uptime guarantee, audited multi-user production security or globally optimal claim.
+](https://github.com/malikammar567/supplyshield-demo.git)
