@@ -1,1 +1,65 @@
-
+{
+    "purpose": "Fictional-data-only SupplyShield recruiter demo",
+    "entrypoint": "recruiter_app.py". 
+   "files": {.         "phase2/engine.py": "80d6933ab746374eed730ef9c73fc4e46653ca9cc4574cdbb1ebbce458103e45",
+         "phase2/first_week_flow.py": "f323396e3151bb047171c1337788f8ffb4a43914e3eee3b9f4c13111cc9e11f3",
+         "phase2/run_baseline.py": "46317372618568bdeb597cf56e18ad1900cceb310664720031c00ef481d8e681",
+         "phase3/comparison.py": "65abc54efb779538e684ba2a42f5a209f9740e36c67660a54cf0e852f459abb0". 
+        "phase3/run_scenarios.py": "b6a517e958e8a666fe38ea3a887b657d9f8ff2dcb7859df71c827e84011216c0",
+         "phase3/scenarios.py": "433875a02ff7e4451959e7aa44d7e30009da69374da3569bf135c6d647fee301",
+         "phase4/comparison.py": "4737cfaa98c936431a5bebf81f72affed0d076d44f3f2d0259a3336626c2abea",
+         "phase4/preparation.py": "7ca39f53c165485a0b1a7d1391c1a8586b1a7051db9908527e97ca4100dbfef5". 
+        "phase4/run_mitigations.py": "d95330ccdd77dcb82dca6198caf0d107c310c8a146e040fa290e2c734c3a511a",
+         "phase4/strategies.py": "a6bf69fadb2a330d2b5c686b2405b6522b68d4219564c65349e92040db8d6bdb",
+         "phase4/valuation.py": "febba16e8cec2a66595dac1b296166fe701bed465218096393a7070da3152400",
+         "phase5/data.py": "3974cb0e037e55facdecaf4d38f2a006ba8ea94124561e8c1127ab7a51c9e3bb",
+         "phase5/exact_formulation.py": "63e8050ebd52551d13760158b62c8fabe334de8d9a8ebfde3c56641650115e50",
+         "phase5/execution.py": "842ff959fdf50d18962f72fb00f727afe5587aa7e802491591e0bda9430e7004",
+         "phase5/formulation.py": "37439d0ad380c4ac0839ca635edd83c291bb61188fb8017e477de84ea8e8ecd5",
+         "phase5/reconcile.py": "7cdba2522facf412e6efc3bd7d8675b66751243810294e4db81d9c5505dcab36",
+         "phase5/run_optimization.py": "05c37c244533b09e1445c6381551edc5feb213f678697334038114a2925b7908",
+         "phase5/solver.py": "adfdfa0e83d5bb9d8eccce3f92be17e0908e2b30278ba7ff3dbc4be1de74d3c6",
+         "phase6/datasets.py": "46e56be433f47fe57cb39cb61e5a69548b61c0815243b4b2ac448ff7066115bb",
+         "phase6/services.py": "19f3f78c24ba2991cca7f54d833b5156ee098ddc445e8f67496ec0f7857f748d",
+         "phase7/analyst.py": "d269cfb86b237ab91d0c10922581f7df6df0267d2afe4e34f999ef940e8bb474",
+         "phase8/build_assets.py": "0965a04bdbae302fd9216fa43c5b9e754e0f16a86823a19f8de7e298ed0f863e",
+         "phase8/contract.py": "d2ecba7bfadadc9f4427714dd6b084fd80e1d4fc0922e6255ab2175c85d30ee6",
+         "phase8/run_verification.py": "057e57f21774da02db6c4a5c4bef5a6f08e0baa773b831ca2a3dd03dd8f22696",
+         "phase8/validate_package.py": "ebe4988c8e4829c6688edb3c51bb40db173c94b76e3727a30570975610e1664a",
+         "phase9/provenance.py": "0c5ecf5c32cd1992a2ac0fbb1827df21e5366b029053027cf4b7d0484d00f591",
+         "phase10/__init__.py": "2cbda9f6d3f65ea496baf964c4a4250e1e63054ccdd2cd8356ab9028280511f1". 
+        "phase10/app.py": "746b9765c91c60a7fe8a4d78f4cd94d28a8f15eab4627a68a4c3d257dfd9ae3d",
+         "phase10/demo_service.py": "6ef07c1b6fe0964159e7965144f792a04cbf69f33fd5cad85fc3b0fdb00fcbaa",
+         "data/bom.csv": "cb71373a87809dd7dc4f9bd148e1fa0656a230578259dbe869da7afeb476acf5",
+         "data/calendar.csv": "58401e135ae39715e5622e0174d4efa9495a51541ea7016a34a90cfaf7010a6c",
+         "data/demand.csv": "9cffed975757d3588bbf985de5fcc436451c85108936a87cb2583c1dc4ea6a1c",
+         "data/facilities.csv": "702ac5f89774dc30246420533e460e4db9724d5f6b263de994b6089b9258eb5b",
+         "data/inventory.csv": "afbae256c0f986e05fff5c93106fe6bbb9e2fb9bdabd1eaad9ffa27b5479785b",
+         "data/items.csv": "aaf7837af5a0ca0fb5bcf2cb9dfb4fff76994c2be8047b5f4c66a42c060a23a8",
+         "data/open_orders.csv": "7516e71bf1ca91f0c042ab916cd3f3cef23456951491f29c3056bc39bc1bf067",
+         "data/production.csv": "53cdde16f66525580db1954cbf2d3b82c9b2df95eb338bdb1acd619a6d085dfd",
+         "data/sourcing_policy.csv": "847ed3ba8bf5d42434cb9edb62acd37d8e544f23ff6d5e1825738848827b4f71",
+         "data/supplier_offers.csv": "106a44b003ac6478b0a8bcb48dfde9b7cd005947a770dbeede49f6a8899fd0b5",
+         "data/suppliers.csv": "1a6a820a50ee8281a0f9c235582b659779038c2173f6c3d24f48320144fc82f2". 
+        "data/transportation.csv": "466c2b9151454d4d6cb4da76acfe882b496ef7e0deb0bedd180c996d16379663",
+         "recruiter_app.py": "48b7d24091e24924e4ccdad0edda7af124b1679e0cb46d7a2a9c22c5c6335630",
+         "validate.py": "30ec4bf55bfeed1dc250ec9bd8014e518e9e8c05343fd122cfeb9d99963b63df",
+         "requirements.txt": "1fd4b3df88ffecd24a7011e9aaa7d70a1ad60e57ae0fdd1d46042beb6e952bab". 
+        "schema.json": "f2dbfeb827ed1f00535e6047a3673cd9d58f61186b38f9a6c8afffee523677ff",
+         "model_config.json": "3753b72acfc4946c99f2417e00c9543a389a33d77ea720222f4f8d173638ee7c",
+         "phase2/planning_policy.json": "f011251e52608d2b0b8a364db13fb28ded09acfdcdcb773ea70f52beaf8d3f0f",
+         "phase4/comparison_config.json": "d7f6ff28fcd39e16587b7e9b6260dfcc4cd0218e0a1a1993a91c20459224d9e2",
+         "phase5/config.json": "55884ad65bfef1dea1ebe9e5aa08be994c2b45b33b9685536d36e59cb3110e07",
+         "phase8/assets/beacon_company.zip": "1f5d073ea5c57f2658488c0893beffc1543151d43605aa85b82dd3714fcf4428". 
+        "phase4/strategies/alternate_plus_expedite.json": "1a23b11abb5dff49c9b73cee6f5ea0e56b69acfb4b476a27539ba3687cd08062",
+         "phase4/strategies/alternate_supplier.json": "37364e0e1fdc8459dae6cb543a2762cf2a00a48ae64b0499f3d62478d5366137",
+         "phase4/strategies/expedited_transport.json": "241d8583eceadd0e0495e9647a1f77d07791f8fbae347a6c84fa7eb465963270",
+         "phase4/strategies/prepared_inventory.json": "a6f3a83d8cb1d7dae7203cd9de1f1e777d2396d89b9c1d2906f7605a0d05029d",
+         "phase4/strategies/prepared_plus_alternate.json": "4c8defe350ed4b191cd66f5f18137f8bd5e42e5f9a46545d9da0ef3817d1dd77". 
+        "phase4/strategies/zero_action.json": "e17f392d42690f36855b8d6e623e465bf245662e19fc1d5b0d93c21163d7479b",
+         "phase9/results/cleardesk/optimization.json": "a84a43d4211bd5334a403513eb5194408d8e8866b5eabe7afc087268d0c108ce",
+         "phase9/results/beacon/optimization.json": "6c8f0398088001df2bb74eed0e61f40ed58253386a58670245c8d9bb5eb0e3a1",
+         ".gitignore": "42746c030f759a7da3bbbad0e5da905a3436cab4f2d5d5bc2247beaf52cf8c9a",
+         ".streamlit/config.toml": "339df5e1aeb6df08c8ac9726c08defa4f48ad686071e9e952c9e192da1182e4b",
+         "README.md": "1b9dfb52ff073753cb1a763fd06b3e21336a1807cba94c7ee39959a65c72d8bb".    }
+}
