@@ -1,4 +1,6 @@
-[# SupplyShield public recruiter demo
+# SupplyShield public recruiter demo
+
+[Open the public demo](https://supplyshield-ammar-demo.streamlit.app/) · [Source repository](https://github.com/malikammar567/supplyshield-demo)
 
 This separate interface contains fictional ClearDesk and Beacon data only. Visitors follow Baseline → Disruption → Responses → Verified optimizer → Free Analyst. It has no company upload controls, provider selector, credentials, account system or arbitrary JSON editor. The complete local workspace remains available through `python3 launch.py`.
 
@@ -23,7 +25,7 @@ On Windows, activate with `.venv\Scripts\activate` instead. No API key, Ollama, 
 
 ## Publish for free with Streamlit Community Cloud
 
-**Publishing has not happened yet.** A GitHub repository and Streamlit Community Cloud account are required. Official guidance: [free hosting](https://docs.streamlit.io/deploy), [account and GitHub setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started), [deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy), [resource limits](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app). Verified against official documentation on October 1, 2026; free service terms and limits may change.
+**Published October 1, 2026.** The live app was checked without a signed-in visitor account: both company baselines, the ClearDesk disruption/comparison, saved optimizer examples, Free Analyst and detailed-results download. The instructions below explain how to reproduce this deployment. A GitHub repository and Streamlit Community Cloud account are required. Official guidance: [free hosting](https://docs.streamlit.io/deploy), [account and GitHub setup](https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started), [deployment](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy), [resource limits](https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app). Verified against official documentation on October 1, 2026; free service terms and limits may change.
 
 1. Create a GitHub account if needed, then create an empty public repository named `supplyshield-demo`. Do not upload the full Desktop project.
 2. Extract `SupplyShield-public-demo.zip`. Upload its **contents** to the repository root, preserving folders. Include the `.streamlit` folder if your file picker displays hidden files. No secrets settings are needed; its theme/telemetry settings are already included.
@@ -32,7 +34,7 @@ On Windows, activate with `.venv\Scripts\activate` instead. No API key, Ollama, 
 5. In Advanced settings choose Python 3.12, then deploy. Python 3.12 is a deployment recommendation; the recorded local acceptance environment is Python 3.14.6 on macOS, so verify the cloud run before sharing.
 6. Open the generated `*.streamlit.app` link, try both companies, and follow the acceptance checks below. Put that link on your resume only after it works.
 
-GitHub and Streamlit access is the remaining publication prerequisite. The demo package includes source code and synthetic datasets intended for public display, not private uploaded data, local environments, API keys or historical personal attachments. The source owner retains existing rights; no new license grant is implied.
+GitHub and Streamlit access was supplied by the owner for this publication. The demo package includes source code and synthetic datasets intended for public display, not private uploaded data, local environments, API keys or historical personal attachments. The source owner retains existing rights; no new license grant is implied.
 
 ## What is live and what is saved?
 
@@ -60,4 +62,3 @@ Use Tab/Shift+Tab and keyboard activation to navigate labeled controls. Charts h
 Before sharing the URL: switch both companies; verify default numbers above; test zero loss; submit an invalid late-start/four-week duration and expect an actionable error; compare at 95%; open the saved optimizer; explain its current result; download reports; confirm there is no upload, API key, local-model or hosted-provider control. Never put private company data or keys in this repository.
 
 Free hosting may sleep, restart or slow under traffic. Cache/session state can disappear and must not be treated as persistent storage. Anonymous visitors cannot start solvers, but all other calculations still use server resources. This is a public portfolio demo with no uptime guarantee, audited multi-user production security or globally optimal claim.
-](https://github.com/malikammar567/supplyshield-demo.git)
