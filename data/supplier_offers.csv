@@ -1,0 +1,12 @@
+supplier_id,component_id,weekly_capacity_units,unit_cost_usd,lead_time_weeks,minimum_order_units
+S01,C01,260,5,3,20
+S02,C01,100,7,1,10
+S01,C02,120,4,3,20
+S02,C02,60,6,1,10
+S01,C03,200,3,3,20
+S02,C03,80,4.5,1,10
+S03,C04,140,2,2,20
+S02,C04,60,3,1,10
+S03,C05,180,1,2,20
+S02,C05,80,1.5,1,10
+S04,C06,400,0.8,1,20

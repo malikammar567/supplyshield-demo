@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "tables": {
+    "suppliers": {
+      "columns": [
+        "supplier_id",
+        "supplier_name",
+        "country"
+      ],
+      "row_count": 4
+    },
+    "items": {
+      "columns": [
+        "item_id",
+        "item_name",
+        "item_type",
+        "uom",
+        "selling_price_usd"
+      ],
+      "row_count": 10
+    },
+    "facilities": {
+      "columns": [
+        "facility_id",
+        "facility_name",
+        "facility_type",
+        "country",
+        "weekly_production_hours"
+      ],
+      "row_count": 3
+    },
+    "bom": {
+      "columns": [
+        "product_id",
+        "component_id",
+        "quantity_per_product"
+      ],
+      "row_count": 13
+    },
+    "production": {
+      "columns": [
+        "facility_id",
+        "product_id",
+        "hours_per_unit",
+        "conversion_cost_usd_per_unit"
+      ],
+      "row_count": 4
+    },
+    "supplier_offers": {
+      "columns": [
+        "supplier_id",
+        "component_id",
+        "weekly_capacity_units",
+        "unit_cost_usd",
+        "lead_time_weeks",
+        "minimum_order_units"
+      ],
+      "row_count": 11
+    },
+    "sourcing_policy": {
+      "columns": [
+        "supplier_id",
+        "component_id",
+        "baseline_share"
+      ],
+      "row_count": 11
+    },
+    "inventory": {
+      "columns": [
+        "facility_id",
+        "item_id",
+        "on_hand_units",
+        "safety_stock_target_units"
+      ],
+      "row_count": 14
+    },
+    "transportation": {
+      "columns": [
+        "lane_id",
+        "origin_id",
+        "origin_type",
+        "destination_id",
+        "destination_type",
+        "mode",
+        "lead_time_weeks",
+        "cost_usd_per_unit"
+      ],
+      "row_count": 6
+    },
+    "calendar": {
+      "columns": [
+        "week_start"
+      ],
+      "row_count": 8
+    },
+    "demand": {
+      "columns": [
+        "week_start",
+        "warehouse_id",
+        "product_id",
+        "demand_units"
+      ],
+      "row_count": 64
+    },
+    "open_orders": {
+      "columns": [
+        "order_id",
+        "supplier_id",
+        "component_id",
+        "destination_id",
+        "quantity_units",
+        "receipt_week_start"
+      ],
+      "row_count": 7
+    }
+  }
+}

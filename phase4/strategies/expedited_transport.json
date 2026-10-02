@@ -1,0 +1,35 @@
+{
+  "mode": "reactive",
+  "start_week": "2026-10-05",
+  "duration_weeks": 8,
+  "reallocation": [],
+  "expedited_routes": [
+    {
+      "route_id": "EXP-IN-S01",
+      "lane_id": "L01",
+      "kind": "inbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 1.5
+    },
+    {
+      "route_id": "EXP-W01",
+      "lane_id": "L05",
+      "kind": "outbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 1.5
+    },
+    {
+      "route_id": "EXP-W02",
+      "lane_id": "L06",
+      "kind": "outbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 2.0
+    }
+  ],
+  "preparation": null,
+  "assumptions": "Synthetic demonstration; no supplier qualification or capacity is added.",
+  "strategy_id": "expedited_transport"
+}

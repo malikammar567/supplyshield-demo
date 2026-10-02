@@ -1,0 +1,4 @@
+facility_id,facility_name,facility_type,country,weekly_production_hours
+F01,Dallas Assembly,factory,United States,160
+W01,Dallas Distribution,warehouse,United States,0
+W02,Austin Distribution,warehouse,United States,0

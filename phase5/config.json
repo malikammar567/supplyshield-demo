@@ -1,0 +1,43 @@
+{
+  "service_target": 0.95,
+  "service_targets_to_run": [
+    0.9,
+    0.95,
+    0.98,
+    1.0
+  ],
+  "annual_holding_cost_rate": 0.2,
+  "holding_basis": "moving_average_exact",
+  "service_floors": [],
+  "terminal_inventory_floors": [],
+  "response_start_week": "2026-10-05",
+  "response_duration_weeks": 8,
+  "expedited_routes": [
+    {
+      "route_id": "EXP-IN-S01",
+      "lane_id": "L01",
+      "kind": "inbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 1.5
+    },
+    {
+      "route_id": "EXP-W01",
+      "lane_id": "L05",
+      "kind": "outbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 1.5
+    },
+    {
+      "route_id": "EXP-W02",
+      "lane_id": "L06",
+      "kind": "outbound",
+      "original_transport_weeks": 1,
+      "expedited_transport_weeks": 0,
+      "cost_usd_per_unit": 2.0
+    }
+  ],
+  "solver_time_limit_seconds": 45,
+  "assumptions": "Reactive integer model; exact Phase 4 moving-average holding. Same synthetic expedited routes. No terminal salvage credit, extra service floors or invented future demand."
+}

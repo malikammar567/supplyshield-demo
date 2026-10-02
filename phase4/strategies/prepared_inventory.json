@@ -1,0 +1,46 @@
+{
+  "mode": "proactive",
+  "start_week": "2026-10-05",
+  "duration_weeks": 8,
+  "reallocation": [],
+  "expedited_routes": [],
+  "preparation": {
+    "weeks": 6,
+    "targets": [
+      {
+        "supplier_id": "S01",
+        "component_id": "C01",
+        "extra_units": 200
+      },
+      {
+        "supplier_id": "S01",
+        "component_id": "C02",
+        "extra_units": 240
+      },
+      {
+        "supplier_id": "S01",
+        "component_id": "C03",
+        "extra_units": 320
+      }
+    ],
+    "other_weekly_commitments": [
+      {
+        "supplier_id": "S01",
+        "component_id": "C01",
+        "quantity_units": 60
+      },
+      {
+        "supplier_id": "S01",
+        "component_id": "C02",
+        "quantity_units": 20
+      },
+      {
+        "supplier_id": "S01",
+        "component_id": "C03",
+        "quantity_units": 40
+      }
+    ]
+  },
+  "assumptions": "Synthetic demonstration; no supplier qualification or capacity is added.",
+  "strategy_id": "prepared_inventory"
+}

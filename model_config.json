@@ -1,0 +1,16 @@
+{
+  "company": "ClearDesk Manufacturing (fictional)",
+  "currency": "USD",
+  "time_bucket": "week",
+  "snapshot_date": "2026-10-05",
+  "horizon_weeks": 8,
+  "scenario_data": "synthetic",
+  "demand_policy": "lost_sales",
+  "production_lead_time_weeks": 0,
+  "receipt_timing": "start_of_week",
+  "demand_timing": "end_of_week",
+  "supplier_capacity_scope": "independent_per_supplier_component",
+  "inbound_lead_time_rule": "supplier_offers lead time is total release-to-factory receipt; supplier transportation lead time is descriptive and must not be added again",
+  "safety_stock_rule": "target included in on_hand; never added to inventory; may be consumed",
+  "open_order_rule": "pre-horizon firm orders; assumed to arrive as scheduled; future disruptions must explicitly state whether these orders are affected"
+}

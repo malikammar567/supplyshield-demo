@@ -1,0 +1,6 @@
+{
+  "target_unit_fill_rate": 0.95,
+  "annual_holding_cost_rate": 0.2,
+  "ranking_measure": "gross_committed_resource_cost",
+  "assumptions": "20% annual carrying cost and all preparedness/expedited values are synthetic demonstration assumptions."
+}

@@ -1,0 +1,7 @@
+lane_id,origin_id,origin_type,destination_id,destination_type,mode,lead_time_weeks,cost_usd_per_unit
+L01,S01,supplier,F01,facility,standard,3,0.5
+L02,S02,supplier,F01,facility,standard,1,0.3
+L03,S03,supplier,F01,facility,standard,2,0.3
+L04,S04,supplier,F01,facility,standard,1,0.3
+L05,F01,facility,W01,facility,truck,1,0.6
+L06,F01,facility,W02,facility,truck,1,1.0

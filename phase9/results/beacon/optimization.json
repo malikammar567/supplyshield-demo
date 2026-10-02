@@ -1,0 +1,4601 @@
+{
+  "key": "eff3a2db9028b0fbb4cb635fa0ddec7693e9ace5d189051d5e28cba2fc80eab9",
+  "dataset_id": "30ffc56bb8c98baadbf64f8274f4fc975dd864cb64a93a61a5db853d6c6c37b0",
+  "dataset_name": "Beacon Instruments (fictional)",
+  "schema_version": "1.1",
+  "configuration_hash": "f9ebc0df715cb7a2cc675232b289ebe77348c8f2444b359f1da3fb39818a99dc",
+  "request_configuration_hash": "f8141563e583d37fd3aeffd2f4524a3b34278acf9cc7687823bb0a40ed021588",
+  "kind": "optimization",
+  "config": {
+    "scenario": {
+      "scenario_id": "interactive_scenario",
+      "type": "supplier_capacity_loss",
+      "start_week": "2027-01-04",
+      "duration_weeks": 4,
+      "existing_firm_orders_policy": "preserve_scheduled_receipts",
+      "supplier_id": "NORTH",
+      "capacity_loss_percentage": 60
+    },
+    "optimization": {
+      "service_target": 0.95,
+      "service_targets_to_run": [
+        0.95
+      ],
+      "annual_holding_cost_rate": 0.2,
+      "holding_basis": "moving_average_exact",
+      "service_floors": [],
+      "terminal_inventory_floors": [],
+      "response_start_week": "2027-01-04",
+      "response_duration_weeks": 6,
+      "expedited_routes": [],
+      "solver_time_limit_seconds": 10,
+      "assumptions": "Reactive integer model; exact Phase 4 moving-average holding. Same synthetic expedited routes. No terminal salvage credit, extra service floors or invented future demand."
+    }
+  },
+  "created_at": "2026-10-02T03:13:01.586740+00:00",
+  "limitations": "Unit fill rate is fulfilled units / demand, not OTIF or stockout probability. Lower disruption cost may reflect less production, not savings. Revenue exposure is not lost profit. Terminal inventory and outstanding commitments affect comparisons. Aggregate service may hide product/warehouse shortages. Solver conclusions apply only to configured actions, horizon and assumptions. Firm receipts are preserved. No future demand is invented.",
+  "dataset_profile": {
+    "dataset_id": "30ffc56bb8c98baadbf64f8274f4fc975dd864cb64a93a61a5db853d6c6c37b0",
+    "schema_version": "1.1",
+    "configuration_hash": "f9ebc0df715cb7a2cc675232b289ebe77348c8f2444b359f1da3fb39818a99dc",
+    "company": "Beacon Instruments (fictional)",
+    "row_counts": {
+      "suppliers": 2,
+      "items": 4,
+      "facilities": 4,
+      "bom": 2,
+      "production": 2,
+      "supplier_offers": 4,
+      "sourcing_policy": 4,
+      "inventory": 8,
+      "transportation": 5,
+      "calendar": 6,
+      "demand": 36,
+      "open_orders": 2
+    },
+    "ids": {
+      "suppliers": [
+        "NORTH",
+        "DELTA"
+      ],
+      "items": [
+        "STEEL",
+        "CELL",
+        "LAMP",
+        "GAUGE"
+      ],
+      "facilities": [
+        "WORKS",
+        "EAST",
+        "WEST",
+        "CENTRAL"
+      ]
+    },
+    "horizon": {
+      "start": "2027-01-04",
+      "end": "2027-02-08",
+      "weeks": 6
+    },
+    "units": "EA",
+    "currency": "USD",
+    "relationships": {
+      "bom": 2,
+      "qualified_offers": 4,
+      "lanes": 5,
+      "firm_purchase_orders": 2
+    },
+    "supported": [
+      "One factory",
+      "One-level component-to-finished-product BOM",
+      "Multiple suppliers, products and warehouses",
+      "Weekly integer material flows",
+      "Lost sales",
+      "Qualified offers and reactive strategies"
+    ],
+    "unsupported": [
+      "Multiple factories",
+      "Multi-stage BOMs",
+      "Warehouse transfers / multi-echelon networks",
+      "Substitute components",
+      "Shared supplier-wide capacity",
+      "Currency conversion",
+      "Live ERP integration"
+    ],
+    "assumptions": {
+      "model": {
+        "company": "Beacon Instruments (fictional)",
+        "currency": "USD",
+        "time_bucket": "week",
+        "snapshot_date": "2027-01-04",
+        "horizon_weeks": 6,
+        "scenario_data": "synthetic",
+        "demand_policy": "lost_sales",
+        "production_lead_time_weeks": 0,
+        "receipt_timing": "start_of_week",
+        "demand_timing": "end_of_week",
+        "supplier_capacity_scope": "independent_per_supplier_component",
+        "inbound_lead_time_rule": "supplier_offers lead time is total release-to-factory receipt; supplier transportation lead time is descriptive and must not be added again",
+        "safety_stock_rule": "target included in on_hand; never added to inventory; may be consumed",
+        "open_order_rule": "pre-horizon firm orders; assumed to arrive as scheduled; future disruptions must explicitly state whether these orders are affected",
+        "model_config_version": "1.0"
+      },
+      "planning": {
+        "policy_version": "1.0",
+        "production_priority": [
+          "GAUGE",
+          "LAMP"
+        ],
+        "purchasing_rule": "rolling_inventory_position",
+        "sourcing_rule": "baseline_shares_no_reallocation",
+        "warehouse_allocation_rule": "proportional_largest_remainder",
+        "warehouse_buffer_rule": "replenish_to_safety_target",
+        "purchase_coverage_extra_weeks": 1
+      }
+    },
+    "warnings": [
+      "STEEL: single-sourced baseline policy.",
+      "CELL: single-sourced baseline policy.",
+      "Aggregate fill rate can hide product and warehouse failures.",
+      "No demand is assumed beyond the calendar. Outstanding orders may arrive afterward.",
+      "Supplier capacities are independent per component, not a shared supplier-wide pool."
+    ],
+    "optimization": {
+      "structurally_suitable": true,
+      "feasibility": "Not guaranteed: a solver must check the requested target.",
+      "scale": "Large inputs can exceed local memory or solver time; upload limits are security limits, not performance promises."
+    }
+  },
+  "dataset_assumptions": {
+    "model": {
+      "company": "Beacon Instruments (fictional)",
+      "currency": "USD",
+      "time_bucket": "week",
+      "snapshot_date": "2027-01-04",
+      "horizon_weeks": 6,
+      "scenario_data": "synthetic",
+      "demand_policy": "lost_sales",
+      "production_lead_time_weeks": 0,
+      "receipt_timing": "start_of_week",
+      "demand_timing": "end_of_week",
+      "supplier_capacity_scope": "independent_per_supplier_component",
+      "inbound_lead_time_rule": "supplier_offers lead time is total release-to-factory receipt; supplier transportation lead time is descriptive and must not be added again",
+      "safety_stock_rule": "target included in on_hand; never added to inventory; may be consumed",
+      "open_order_rule": "pre-horizon firm orders; assumed to arrive as scheduled; future disruptions must explicitly state whether these orders are affected",
+      "model_config_version": "1.0"
+    },
+    "planning": {
+      "policy_version": "1.0",
+      "production_priority": [
+        "GAUGE",
+        "LAMP"
+      ],
+      "purchasing_rule": "rolling_inventory_position",
+      "sourcing_rule": "baseline_shares_no_reallocation",
+      "warehouse_allocation_rule": "proportional_largest_remainder",
+      "warehouse_buffer_rule": "replenish_to_safety_target",
+      "purchase_coverage_extra_weeks": 1
+    }
+  },
+  "validation_report": {
+    "status": "PASS",
+    "schema_version": "1.1",
+    "errors": [],
+    "mapping": [
+      {
+        "file": "data/suppliers.csv",
+        "table": "suppliers",
+        "columns": [
+          "supplier_id",
+          "supplier_name",
+          "country"
+        ],
+        "primary_key": [
+          "supplier_id"
+        ],
+        "row_count": 2
+      },
+      {
+        "file": "data/items.csv",
+        "table": "items",
+        "columns": [
+          "item_id",
+          "item_name",
+          "item_type",
+          "uom",
+          "selling_price_usd"
+        ],
+        "primary_key": [
+          "item_id"
+        ],
+        "row_count": 4
+      },
+      {
+        "file": "data/facilities.csv",
+        "table": "facilities",
+        "columns": [
+          "facility_id",
+          "facility_name",
+          "facility_type",
+          "country",
+          "weekly_production_hours"
+        ],
+        "primary_key": [
+          "facility_id"
+        ],
+        "row_count": 4
+      },
+      {
+        "file": "data/bom.csv",
+        "table": "bom",
+        "columns": [
+          "product_id",
+          "component_id",
+          "quantity_per_product"
+        ],
+        "primary_key": [
+          "product_id",
+          "component_id"
+        ],
+        "row_count": 2
+      },
+      {
+        "file": "data/production.csv",
+        "table": "production",
+        "columns": [
+          "facility_id",
+          "product_id",
+          "hours_per_unit",
+          "conversion_cost_usd_per_unit"
+        ],
+        "primary_key": [
+          "facility_id",
+          "product_id"
+        ],
+        "row_count": 2
+      },
+      {
+        "file": "data/supplier_offers.csv",
+        "table": "supplier_offers",
+        "columns": [
+          "supplier_id",
+          "component_id",
+          "weekly_capacity_units",
+          "unit_cost_usd",
+          "lead_time_weeks",
+          "minimum_order_units"
+        ],
+        "primary_key": [
+          "supplier_id",
+          "component_id"
+        ],
+        "row_count": 4
+      },
+      {
+        "file": "data/sourcing_policy.csv",
+        "table": "sourcing_policy",
+        "columns": [
+          "supplier_id",
+          "component_id",
+          "baseline_share"
+        ],
+        "primary_key": [
+          "supplier_id",
+          "component_id"
+        ],
+        "row_count": 4
+      },
+      {
+        "file": "data/inventory.csv",
+        "table": "inventory",
+        "columns": [
+          "facility_id",
+          "item_id",
+          "on_hand_units",
+          "safety_stock_target_units"
+        ],
+        "primary_key": [
+          "facility_id",
+          "item_id"
+        ],
+        "row_count": 8
+      },
+      {
+        "file": "data/transportation.csv",
+        "table": "transportation",
+        "columns": [
+          "lane_id",
+          "origin_id",
+          "origin_type",
+          "destination_id",
+          "destination_type",
+          "mode",
+          "lead_time_weeks",
+          "cost_usd_per_unit"
+        ],
+        "primary_key": [
+          "lane_id"
+        ],
+        "row_count": 5
+      },
+      {
+        "file": "data/calendar.csv",
+        "table": "calendar",
+        "columns": [
+          "week_start"
+        ],
+        "primary_key": [
+          "week_start"
+        ],
+        "row_count": 6
+      },
+      {
+        "file": "data/demand.csv",
+        "table": "demand",
+        "columns": [
+          "week_start",
+          "warehouse_id",
+          "product_id",
+          "demand_units"
+        ],
+        "primary_key": [
+          "week_start",
+          "warehouse_id",
+          "product_id"
+        ],
+        "row_count": 36
+      },
+      {
+        "file": "data/open_orders.csv",
+        "table": "open_orders",
+        "columns": [
+          "order_id",
+          "supplier_id",
+          "component_id",
+          "destination_id",
+          "quantity_units",
+          "receipt_week_start"
+        ],
+        "primary_key": [
+          "order_id"
+        ],
+        "row_count": 2
+      }
+    ],
+    "profile": {
+      "dataset_id": "30ffc56bb8c98baadbf64f8274f4fc975dd864cb64a93a61a5db853d6c6c37b0",
+      "schema_version": "1.1",
+      "configuration_hash": "f9ebc0df715cb7a2cc675232b289ebe77348c8f2444b359f1da3fb39818a99dc",
+      "company": "Beacon Instruments (fictional)",
+      "row_counts": {
+        "suppliers": 2,
+        "items": 4,
+        "facilities": 4,
+        "bom": 2,
+        "production": 2,
+        "supplier_offers": 4,
+        "sourcing_policy": 4,
+        "inventory": 8,
+        "transportation": 5,
+        "calendar": 6,
+        "demand": 36,
+        "open_orders": 2
+      },
+      "ids": {
+        "suppliers": [
+          "NORTH",
+          "DELTA"
+        ],
+        "items": [
+          "STEEL",
+          "CELL",
+          "LAMP",
+          "GAUGE"
+        ],
+        "facilities": [
+          "WORKS",
+          "EAST",
+          "WEST",
+          "CENTRAL"
+        ]
+      },
+      "horizon": {
+        "start": "2027-01-04",
+        "end": "2027-02-08",
+        "weeks": 6
+      },
+      "units": "EA",
+      "currency": "USD",
+      "relationships": {
+        "bom": 2,
+        "qualified_offers": 4,
+        "lanes": 5,
+        "firm_purchase_orders": 2
+      },
+      "supported": [
+        "One factory",
+        "One-level component-to-finished-product BOM",
+        "Multiple suppliers, products and warehouses",
+        "Weekly integer material flows",
+        "Lost sales",
+        "Qualified offers and reactive strategies"
+      ],
+      "unsupported": [
+        "Multiple factories",
+        "Multi-stage BOMs",
+        "Warehouse transfers / multi-echelon networks",
+        "Substitute components",
+        "Shared supplier-wide capacity",
+        "Currency conversion",
+        "Live ERP integration"
+      ],
+      "assumptions": {
+        "model": {
+          "company": "Beacon Instruments (fictional)",
+          "currency": "USD",
+          "time_bucket": "week",
+          "snapshot_date": "2027-01-04",
+          "horizon_weeks": 6,
+          "scenario_data": "synthetic",
+          "demand_policy": "lost_sales",
+          "production_lead_time_weeks": 0,
+          "receipt_timing": "start_of_week",
+          "demand_timing": "end_of_week",
+          "supplier_capacity_scope": "independent_per_supplier_component",
+          "inbound_lead_time_rule": "supplier_offers lead time is total release-to-factory receipt; supplier transportation lead time is descriptive and must not be added again",
+          "safety_stock_rule": "target included in on_hand; never added to inventory; may be consumed",
+          "open_order_rule": "pre-horizon firm orders; assumed to arrive as scheduled; future disruptions must explicitly state whether these orders are affected",
+          "model_config_version": "1.0"
+        },
+        "planning": {
+          "policy_version": "1.0",
+          "production_priority": [
+            "GAUGE",
+            "LAMP"
+          ],
+          "purchasing_rule": "rolling_inventory_position",
+          "sourcing_rule": "baseline_shares_no_reallocation",
+          "warehouse_allocation_rule": "proportional_largest_remainder",
+          "warehouse_buffer_rule": "replenish_to_safety_target",
+          "purchase_coverage_extra_weeks": 1
+        }
+      },
+      "warnings": [
+        "STEEL: single-sourced baseline policy.",
+        "CELL: single-sourced baseline policy.",
+        "Aggregate fill rate can hide product and warehouse failures.",
+        "No demand is assumed beyond the calendar. Outstanding orders may arrive afterward.",
+        "Supplier capacities are independent per component, not a shared supplier-wide pool."
+      ],
+      "optimization": {
+        "structurally_suitable": true,
+        "feasibility": "Not guaranteed: a solver must check the requested target.",
+        "scale": "Large inputs can exceed local memory or solver time; upload limits are security limits, not performance promises."
+      }
+    }
+  },
+  "run_id": "ss-optimization-bc054e32d4bc478d",
+  "project_version": "0.9.0",
+  "engine_version": "weekly-planning-1.0",
+  "engine_source_hash": "b55c169008e21d780651c5ea19387fe51c6aa590e686f6b3bd9d6606d5da4a3c",
+  "engine_source_files": {
+    "phase2/engine.py": "80d6933ab746374eed730ef9c73fc4e46653ca9cc4574cdbb1ebbce458103e45",
+    "phase3/scenarios.py": "433875a02ff7e4451959e7aa44d7e30009da69374da3569bf135c6d647fee301",
+    "phase4/strategies.py": "a6bf69fadb2a330d2b5c686b2405b6522b68d4219564c65349e92040db8d6bdb",
+    "phase4/preparation.py": "7ca39f53c165485a0b1a7d1391c1a8586b1a7051db9908527e97ca4100dbfef5",
+    "phase4/valuation.py": "febba16e8cec2a66595dac1b296166fe701bed465218096393a7070da3152400",
+    "phase5/data.py": "3974cb0e037e55facdecaf4d38f2a006ba8ea94124561e8c1127ab7a51c9e3bb",
+    "phase5/formulation.py": "37439d0ad380c4ac0839ca635edd83c291bb61188fb8017e477de84ea8e8ecd5",
+    "phase5/exact_formulation.py": "63e8050ebd52551d13760158b62c8fabe334de8d9a8ebfde3c56641650115e50",
+    "phase5/execution.py": "842ff959fdf50d18962f72fb00f727afe5587aa7e802491591e0bda9430e7004",
+    "phase5/reconcile.py": "7cdba2522facf412e6efc3bd7d8675b66751243810294e4db81d9c5505dcab36",
+    "phase5/solver.py": "adfdfa0e83d5bb9d8eccce3f92be17e0908e2b30278ba7ff3dbc4be1de74d3c6"
+  },
+  "execution_origin": "saved_verified_example",
+  "solver": {
+    "status": "FEASIBLE_NOT_PROVEN",
+    "feasible_incumbent": true,
+    "proven_optimal_for_fixed_standard_model": false,
+    "proven_optimal": false,
+    "holding_basis": "moving_average_exact",
+    "objective": 535.0153846153843,
+    "best_bound": 530.2725,
+    "relative_gap": 0.00886494996549275,
+    "runtime_seconds": 10.053421083001012,
+    "solver": "CBC via PuLP",
+    "pulp_version": "3.3.0",
+    "cbc_path": "/Users/Ammar/Desktop/Resilience/SupplyChain_Resilience_Phase1/.venv-phase5/lib/python3.14/site-packages/pulp/apis/../solverdir/cbc/osx/i64/cbc",
+    "cbc_problem_status": "Optimal",
+    "cbc_solution_status": "Solution Found",
+    "variables": 2736,
+    "constraints": 4039,
+    "interpretation": "Optimality applies only to the configured model and holding basis; a feasible time-limited incumbent is not proven optimal."
+  },
+  "warm_solver": {
+    "status": "OPTIMAL_FIXED_STANDARD_MODEL",
+    "feasible_incumbent": true,
+    "proven_optimal_for_fixed_standard_model": true,
+    "proven_optimal": true,
+    "holding_basis": "fixed_standard_value",
+    "objective": 535.0153846153843,
+    "best_bound": 535.0153846153843,
+    "relative_gap": 0.0,
+    "runtime_seconds": 0.03486045799945714,
+    "solver": "CBC via PuLP",
+    "pulp_version": "3.3.0",
+    "cbc_path": "/Users/Ammar/Desktop/Resilience/SupplyChain_Resilience_Phase1/.venv-phase5/lib/python3.14/site-packages/pulp/apis/../solverdir/cbc/osx/i64/cbc",
+    "cbc_problem_status": "Optimal",
+    "cbc_solution_status": "Optimal Solution Found",
+    "variables": 192,
+    "constraints": 115,
+    "interpretation": "Optimality applies only to the configured model and holding basis; a feasible time-limited incumbent is not proven optimal."
+  },
+  "run": {
+    "component_inventory": [
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 10,
+        "receipts_units": 6,
+        "consumed_units": 3,
+        "ending_units": 13
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 12,
+        "receipts_units": 6,
+        "consumed_units": 2,
+        "ending_units": 16
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 13,
+        "receipts_units": 0,
+        "consumed_units": 7,
+        "ending_units": 6
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 16,
+        "receipts_units": 0,
+        "consumed_units": 6,
+        "ending_units": 10
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 6,
+        "receipts_units": 3,
+        "consumed_units": 7,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 10,
+        "receipts_units": 0,
+        "consumed_units": 6,
+        "ending_units": 4
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 2,
+        "receipts_units": 5,
+        "consumed_units": 7,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 4,
+        "receipts_units": 2,
+        "consumed_units": 5,
+        "ending_units": 1
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "receipts_units": 4,
+        "consumed_units": 4,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 1,
+        "receipts_units": 3,
+        "consumed_units": 4,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "receipts_units": 0,
+        "consumed_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "receipts_units": 0,
+        "consumed_units": 0,
+        "ending_units": 0
+      }
+    ],
+    "factory_inventory": [
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 2,
+        "shipped_units": 2,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 3,
+        "shipped_units": 3,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 6,
+        "shipped_units": 6,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 7,
+        "shipped_units": 7,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 6,
+        "shipped_units": 6,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 7,
+        "shipped_units": 7,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 5,
+        "shipped_units": 5,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 7,
+        "shipped_units": 7,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 4,
+        "shipped_units": 4,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 4,
+        "shipped_units": 4,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "produced_units": 0,
+        "shipped_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "produced_units": 0,
+        "shipped_units": 0,
+        "ending_units": 0
+      }
+    ],
+    "warehouse_inventory": [
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 2,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 2,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 2,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 2,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 2,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 4,
+        "receipts_units": 0,
+        "demand_units": 3,
+        "fulfilled_units": 3,
+        "unmet_units": 0,
+        "ending_units": 1,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "receipts_units": 0,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 1,
+        "receipts_units": 0,
+        "demand_units": 3,
+        "fulfilled_units": 1,
+        "unmet_units": 2,
+        "ending_units": 0,
+        "unit_fill_rate": 0.3333333333333333,
+        "potential_sales_revenue_exposure": 180
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 3,
+        "demand_units": 3,
+        "fulfilled_units": 3,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 3,
+        "demand_units": 3,
+        "fulfilled_units": 3,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 3,
+        "demand_units": 3,
+        "fulfilled_units": 3,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 2,
+        "demand_units": 2,
+        "fulfilled_units": 2,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "receipts_units": 1,
+        "demand_units": 2,
+        "fulfilled_units": 1,
+        "unmet_units": 1,
+        "ending_units": 0,
+        "unit_fill_rate": 0.5,
+        "potential_sales_revenue_exposure": 140
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "receipts_units": 3,
+        "demand_units": 3,
+        "fulfilled_units": 3,
+        "unmet_units": 0,
+        "ending_units": 0,
+        "unit_fill_rate": 1,
+        "potential_sales_revenue_exposure": 0
+      }
+    ],
+    "production": [
+      {
+        "week_start": "2027-01-04",
+        "product_id": "GAUGE",
+        "produced_units": 2,
+        "labor_hours": 3,
+        "conversion_cost": 12
+      },
+      {
+        "week_start": "2027-01-04",
+        "product_id": "LAMP",
+        "produced_units": 3,
+        "labor_hours": 3,
+        "conversion_cost": 12
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "GAUGE",
+        "produced_units": 6,
+        "labor_hours": 9,
+        "conversion_cost": 36
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "LAMP",
+        "produced_units": 7,
+        "labor_hours": 7,
+        "conversion_cost": 28
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "GAUGE",
+        "produced_units": 6,
+        "labor_hours": 9,
+        "conversion_cost": 36
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "LAMP",
+        "produced_units": 7,
+        "labor_hours": 7,
+        "conversion_cost": 28
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "GAUGE",
+        "produced_units": 5,
+        "labor_hours": 7.5,
+        "conversion_cost": 30
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "LAMP",
+        "produced_units": 7,
+        "labor_hours": 7,
+        "conversion_cost": 28
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "GAUGE",
+        "produced_units": 4,
+        "labor_hours": 6,
+        "conversion_cost": 24
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "LAMP",
+        "produced_units": 4,
+        "labor_hours": 4,
+        "conversion_cost": 16
+      },
+      {
+        "week_start": "2027-02-08",
+        "product_id": "GAUGE",
+        "produced_units": 0,
+        "labor_hours": 0,
+        "conversion_cost": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "product_id": "LAMP",
+        "produced_units": 0,
+        "labor_hours": 0,
+        "conversion_cost": 0
+      }
+    ],
+    "supplier_capacity": [
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 3,
+        "utilization": 0.6,
+        "remaining_capacity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 5
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 5,
+        "utilization": 1,
+        "remaining_capacity_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 2,
+        "utilization": 0.4,
+        "remaining_capacity_units": 3
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 4,
+        "utilization": 0.8,
+        "remaining_capacity_units": 1
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 3,
+        "utilization": 0.6,
+        "remaining_capacity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 5
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 5,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 5
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 14,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 14
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 14,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 14
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "normal_capacity_units": 8,
+        "effective_capacity_units": 8,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 8
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 14,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 14
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "normal_capacity_units": 14,
+        "effective_capacity_units": 14,
+        "released_units": 0,
+        "utilization": 0,
+        "remaining_capacity_units": 14
+      }
+    ],
+    "receipts": [
+      {
+        "week_start": "2027-01-04",
+        "order_id": "BOOKED-STEEL",
+        "kind": "firm",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "quantity_units": 6,
+        "purchase_cost": 54,
+        "inbound_transport_cost": 4.8
+      },
+      {
+        "week_start": "2027-01-04",
+        "order_id": "BOOKED-CELL",
+        "kind": "firm",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "quantity_units": 6,
+        "purchase_cost": 42,
+        "inbound_transport_cost": 4.8
+      },
+      {
+        "week_start": "2027-01-18",
+        "order_id": "PLAN-0-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "quantity_units": 3,
+        "purchase_cost": 21,
+        "inbound_transport_cost": 2.4
+      },
+      {
+        "week_start": "2027-01-25",
+        "order_id": "PLAN-1-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "quantity_units": 5,
+        "purchase_cost": 35,
+        "inbound_transport_cost": 4
+      },
+      {
+        "week_start": "2027-01-25",
+        "order_id": "PLAN-1-NORTH-STEEL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "quantity_units": 2,
+        "purchase_cost": 18,
+        "inbound_transport_cost": 1.6
+      },
+      {
+        "week_start": "2027-02-01",
+        "order_id": "PLAN-2-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "quantity_units": 4,
+        "purchase_cost": 28,
+        "inbound_transport_cost": 3.2
+      },
+      {
+        "week_start": "2027-02-01",
+        "order_id": "PLAN-2-NORTH-STEEL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "quantity_units": 3,
+        "purchase_cost": 27,
+        "inbound_transport_cost": 2.4
+      }
+    ],
+    "weekly": [
+      {
+        "week_start": "2027-01-04",
+        "demand_units": 13,
+        "fulfilled_units": 13,
+        "unmet_units": 0,
+        "unit_fill_rate": 1,
+        "produced_units": 5,
+        "factory_hours_used": 6,
+        "factory_hours_available": 20,
+        "factory_utilization": 0.3,
+        "purchasing_cost": 96,
+        "conversion_cost": 24,
+        "inbound_transport_cost": 9.6,
+        "outbound_transport_cost": 3,
+        "transportation_cost": 12.6,
+        "total_operating_activity_cost": 132.6,
+        "new_purchase_commitment": 21,
+        "new_inbound_freight_commitment": 2.4,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "demand_units": 13,
+        "fulfilled_units": 11,
+        "unmet_units": 2,
+        "unit_fill_rate": 0.8461538461538461,
+        "produced_units": 13,
+        "factory_hours_used": 16,
+        "factory_hours_available": 20,
+        "factory_utilization": 0.8,
+        "purchasing_cost": 0,
+        "conversion_cost": 64,
+        "inbound_transport_cost": 0,
+        "outbound_transport_cost": 7.8,
+        "transportation_cost": 7.8,
+        "total_operating_activity_cost": 71.8,
+        "new_purchase_commitment": 53,
+        "new_inbound_freight_commitment": 5.6,
+        "potential_sales_revenue_exposure": 180
+      },
+      {
+        "week_start": "2027-01-18",
+        "demand_units": 13,
+        "fulfilled_units": 13,
+        "unmet_units": 0,
+        "unit_fill_rate": 1,
+        "produced_units": 13,
+        "factory_hours_used": 16,
+        "factory_hours_available": 20,
+        "factory_utilization": 0.8,
+        "purchasing_cost": 21,
+        "conversion_cost": 64,
+        "inbound_transport_cost": 2.4,
+        "outbound_transport_cost": 7.8,
+        "transportation_cost": 10.2,
+        "total_operating_activity_cost": 95.2,
+        "new_purchase_commitment": 55,
+        "new_inbound_freight_commitment": 5.6,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "demand_units": 13,
+        "fulfilled_units": 13,
+        "unmet_units": 0,
+        "unit_fill_rate": 1,
+        "produced_units": 12,
+        "factory_hours_used": 14.5,
+        "factory_hours_available": 20,
+        "factory_utilization": 0.725,
+        "purchasing_cost": 53,
+        "conversion_cost": 58,
+        "inbound_transport_cost": 5.6,
+        "outbound_transport_cost": 7.2,
+        "transportation_cost": 12.8,
+        "total_operating_activity_cost": 123.8,
+        "new_purchase_commitment": 0,
+        "new_inbound_freight_commitment": 0,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "demand_units": 13,
+        "fulfilled_units": 13,
+        "unmet_units": 0,
+        "unit_fill_rate": 1,
+        "produced_units": 8,
+        "factory_hours_used": 10,
+        "factory_hours_available": 20,
+        "factory_utilization": 0.5,
+        "purchasing_cost": 55,
+        "conversion_cost": 40,
+        "inbound_transport_cost": 5.6,
+        "outbound_transport_cost": 4.8,
+        "transportation_cost": 10.4,
+        "total_operating_activity_cost": 105.4,
+        "new_purchase_commitment": 0,
+        "new_inbound_freight_commitment": 0,
+        "potential_sales_revenue_exposure": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "demand_units": 13,
+        "fulfilled_units": 12,
+        "unmet_units": 1,
+        "unit_fill_rate": 0.9230769230769231,
+        "produced_units": 0,
+        "factory_hours_used": 0,
+        "factory_hours_available": 20,
+        "factory_utilization": 0,
+        "purchasing_cost": 0,
+        "conversion_cost": 0,
+        "inbound_transport_cost": 0,
+        "outbound_transport_cost": 0,
+        "transportation_cost": 0,
+        "total_operating_activity_cost": 0,
+        "new_purchase_commitment": 0,
+        "new_inbound_freight_commitment": 0,
+        "potential_sales_revenue_exposure": 140
+      }
+    ],
+    "material_consumption": [
+      {
+        "week_start": "2027-01-04",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 2,
+        "bom_quantity": 1,
+        "consumed_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 3,
+        "bom_quantity": 1,
+        "consumed_units": 3
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 6,
+        "bom_quantity": 1,
+        "consumed_units": 6
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 7,
+        "bom_quantity": 1,
+        "consumed_units": 7
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 6,
+        "bom_quantity": 1,
+        "consumed_units": 6
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 7,
+        "bom_quantity": 1,
+        "consumed_units": 7
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 5,
+        "bom_quantity": 1,
+        "consumed_units": 5
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 7,
+        "bom_quantity": 1,
+        "consumed_units": 7
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 4,
+        "bom_quantity": 1,
+        "consumed_units": 4
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 4,
+        "bom_quantity": 1,
+        "consumed_units": 4
+      },
+      {
+        "week_start": "2027-02-08",
+        "product_id": "GAUGE",
+        "component_id": "STEEL",
+        "produced_units": 0,
+        "bom_quantity": 1,
+        "consumed_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "product_id": "LAMP",
+        "component_id": "CELL",
+        "produced_units": 0,
+        "bom_quantity": 1,
+        "consumed_units": 0
+      }
+    ],
+    "order_pipeline": [
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 6,
+        "released_units": 3,
+        "received_units": 6,
+        "ending_units": 3
+      },
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 6,
+        "released_units": 0,
+        "received_units": 6,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 3,
+        "released_units": 5,
+        "received_units": 0,
+        "ending_units": 8
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 8,
+        "released_units": 4,
+        "received_units": 3,
+        "ending_units": 9
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 2,
+        "released_units": 3,
+        "received_units": 0,
+        "ending_units": 5
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 9,
+        "released_units": 0,
+        "received_units": 5,
+        "ending_units": 4
+      },
+      {
+        "week_start": "2027-01-25",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 5,
+        "released_units": 0,
+        "received_units": 2,
+        "ending_units": 3
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 4,
+        "released_units": 0,
+        "received_units": 4,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 3,
+        "released_units": 0,
+        "received_units": 3,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "DELTA",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "DELTA",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "beginning_units": 0,
+        "released_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      }
+    ],
+    "shipment_pipeline": [
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "dispatched_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "dispatched_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "dispatched_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "dispatched_units": 0,
+        "received_units": 0,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "dispatched_units": 3,
+        "received_units": 0,
+        "ending_units": 3
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 0,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 0,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 0,
+        "ending_units": 4
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 3,
+        "dispatched_units": 3,
+        "received_units": 0,
+        "ending_units": 6
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 4,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 4
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 6,
+        "dispatched_units": 3,
+        "received_units": 3,
+        "ending_units": 6
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 4,
+        "dispatched_units": 1,
+        "received_units": 2,
+        "ending_units": 3
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 6,
+        "dispatched_units": 3,
+        "received_units": 3,
+        "ending_units": 6
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 2,
+        "received_units": 2,
+        "ending_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 3,
+        "dispatched_units": 0,
+        "received_units": 2,
+        "ending_units": 1
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 6,
+        "dispatched_units": 0,
+        "received_units": 3,
+        "ending_units": 3
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 0,
+        "received_units": 2,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 0,
+        "received_units": 2,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "beginning_units": 2,
+        "dispatched_units": 0,
+        "received_units": 2,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "beginning_units": 2,
+        "dispatched_units": 0,
+        "received_units": 2,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "beginning_units": 1,
+        "dispatched_units": 0,
+        "received_units": 1,
+        "ending_units": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "beginning_units": 3,
+        "dispatched_units": 0,
+        "received_units": 3,
+        "ending_units": 0
+      }
+    ],
+    "orders": [
+      {
+        "order_id": "BOOKED-STEEL",
+        "kind": "firm",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "destination_id": "WORKS",
+        "quantity_units": 6,
+        "release_week": null,
+        "release_index": null,
+        "receipt_week": "2027-01-04",
+        "receipt_index": 0,
+        "lead_time_weeks": null,
+        "unit_price": 9,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "BOOKED-CELL",
+        "kind": "firm",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "destination_id": "WORKS",
+        "quantity_units": 6,
+        "release_week": null,
+        "release_index": null,
+        "receipt_week": "2027-01-04",
+        "receipt_index": 0,
+        "lead_time_weeks": null,
+        "unit_price": 7,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "PLAN-0-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "destination_id": "WORKS",
+        "quantity_units": 3,
+        "release_week": "2027-01-04",
+        "release_index": 0,
+        "receipt_week": "2027-01-18",
+        "receipt_index": 2,
+        "lead_time_weeks": 2,
+        "unit_price": 7,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "PLAN-1-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "destination_id": "WORKS",
+        "quantity_units": 5,
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "receipt_week": "2027-01-25",
+        "receipt_index": 3,
+        "lead_time_weeks": 2,
+        "unit_price": 7,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "PLAN-1-NORTH-STEEL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "destination_id": "WORKS",
+        "quantity_units": 2,
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "receipt_week": "2027-01-25",
+        "receipt_index": 3,
+        "lead_time_weeks": 2,
+        "unit_price": 9,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "PLAN-2-NORTH-CELL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "destination_id": "WORKS",
+        "quantity_units": 4,
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "receipt_week": "2027-02-01",
+        "receipt_index": 4,
+        "lead_time_weeks": 2,
+        "unit_price": 7,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      },
+      {
+        "order_id": "PLAN-2-NORTH-STEEL-IN-N",
+        "kind": "new",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "destination_id": "WORKS",
+        "quantity_units": 3,
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "receipt_week": "2027-02-01",
+        "receipt_index": 4,
+        "lead_time_weeks": 2,
+        "unit_price": 9,
+        "inbound_rate": 0.8,
+        "lane_id": "IN-N",
+        "route_id": "IN-N"
+      }
+    ],
+    "shipments": [
+      {
+        "shipment_id": "PLAN-0-WEST-GAUGE-OUT-WEST",
+        "release_week": "2027-01-04",
+        "release_index": 0,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-0-WEST-LAMP-OUT-WEST",
+        "release_week": "2027-01-04",
+        "release_index": 0,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.8
+      },
+      {
+        "shipment_id": "PLAN-1-CENTRAL-GAUGE-OUT-CENTRAL",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-1-EAST-GAUGE-OUT-EAST",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-1-WEST-GAUGE-OUT-WEST",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-1-CENTRAL-LAMP-OUT-CENTRAL",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-1-EAST-LAMP-OUT-EAST",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-18",
+        "arrival_index": 2,
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-1-WEST-LAMP-OUT-WEST",
+        "release_week": "2027-01-11",
+        "release_index": 1,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.8
+      },
+      {
+        "shipment_id": "PLAN-2-CENTRAL-GAUGE-OUT-CENTRAL",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-2-EAST-GAUGE-OUT-EAST",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-2-WEST-GAUGE-OUT-WEST",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-2-CENTRAL-LAMP-OUT-CENTRAL",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-2-EAST-LAMP-OUT-EAST",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-01-25",
+        "arrival_index": 3,
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-2-WEST-LAMP-OUT-WEST",
+        "release_week": "2027-01-18",
+        "release_index": 2,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.8
+      },
+      {
+        "shipment_id": "PLAN-3-CENTRAL-GAUGE-OUT-CENTRAL",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-3-EAST-GAUGE-OUT-EAST",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-3-WEST-GAUGE-OUT-WEST",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 1,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 0.6
+      },
+      {
+        "shipment_id": "PLAN-3-CENTRAL-LAMP-OUT-CENTRAL",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-3-EAST-LAMP-OUT-EAST",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-01",
+        "arrival_index": 4,
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-3-WEST-LAMP-OUT-WEST",
+        "release_week": "2027-01-25",
+        "release_index": 3,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3,
+        "lead_time_weeks": 2,
+        "lane_id": "OUT-WEST",
+        "route_id": "OUT-WEST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.8
+      },
+      {
+        "shipment_id": "PLAN-4-CENTRAL-GAUGE-OUT-CENTRAL",
+        "release_week": "2027-02-01",
+        "release_index": 4,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-4-EAST-GAUGE-OUT-EAST",
+        "release_week": "2027-02-01",
+        "release_index": 4,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-4-CENTRAL-LAMP-OUT-CENTRAL",
+        "release_week": "2027-02-01",
+        "release_index": 4,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-CENTRAL",
+        "route_id": "OUT-CENTRAL",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      },
+      {
+        "shipment_id": "PLAN-4-EAST-LAMP-OUT-EAST",
+        "release_week": "2027-02-01",
+        "release_index": 4,
+        "arrival_week": "2027-02-08",
+        "arrival_index": 5,
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2,
+        "lead_time_weeks": 1,
+        "lane_id": "OUT-EAST",
+        "route_id": "OUT-EAST",
+        "unit_freight_rate": 0.6,
+        "outbound_transport_cost": 1.2
+      }
+    ],
+    "pending_orders": [],
+    "pending_shipments": [],
+    "totals": {
+      "demand_units": 78,
+      "fulfilled_units": 75,
+      "unmet_units": 3,
+      "produced_units": 51,
+      "factory_hours_used": 62.5,
+      "factory_hours_available": 120,
+      "purchasing_cost": 225,
+      "conversion_cost": 250,
+      "inbound_transport_cost": 23.2,
+      "outbound_transport_cost": 30.6,
+      "transportation_cost": 53.8,
+      "total_operating_activity_cost": 528.8,
+      "new_purchase_commitment": 129,
+      "new_inbound_freight_commitment": 13.6,
+      "potential_sales_revenue_exposure": 320,
+      "unit_fill_rate": 0.9615384615384616,
+      "factory_utilization": 0.5208333333333334,
+      "pending_purchase_commitment": 0,
+      "pending_inbound_freight_commitment": 0
+    },
+    "metadata": {
+      "weeks": [
+        "2027-01-04",
+        "2027-01-11",
+        "2027-01-18",
+        "2027-01-25",
+        "2027-02-01",
+        "2027-02-08"
+      ],
+      "policy": {
+        "policy_version": "1.0",
+        "production_priority": [
+          "GAUGE",
+          "LAMP"
+        ],
+        "purchasing_rule": "rolling_inventory_position",
+        "sourcing_rule": "baseline_shares_no_reallocation",
+        "warehouse_allocation_rule": "proportional_largest_remainder",
+        "warehouse_buffer_rule": "replenish_to_safety_target",
+        "purchase_coverage_extra_weeks": 1
+      },
+      "extension_assumption": null,
+      "firm_orders_units": 12,
+      "planning_type": "explicit plan execution; heuristic decisions bypassed"
+    },
+    "checks": {
+      "status": "PASS",
+      "checks": [
+        "inventory continuity and conservation",
+        "BOM and production reconciliation",
+        "PO releases, MOQ and capacity",
+        "firm orders preserved",
+        "receipt and shipment timing",
+        "shared labor capacity",
+        "demand reconciliation",
+        "cost ledger reconciliation",
+        "PO and shipment pipeline conservation"
+      ]
+    }
+  },
+  "plan": {
+    "orders": [
+      {
+        "week_start": "2027-01-04",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "route_id": "IN-N",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "route_id": "IN-N",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "route_id": "IN-N",
+        "quantity_units": 5
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "STEEL",
+        "route_id": "IN-N",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-18",
+        "supplier_id": "NORTH",
+        "component_id": "CELL",
+        "route_id": "IN-N",
+        "quantity_units": 4
+      }
+    ],
+    "production": [
+      {
+        "week_start": "2027-01-04",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "GAUGE",
+        "quantity_units": 6
+      },
+      {
+        "week_start": "2027-01-11",
+        "product_id": "LAMP",
+        "quantity_units": 7
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "GAUGE",
+        "quantity_units": 6
+      },
+      {
+        "week_start": "2027-01-18",
+        "product_id": "LAMP",
+        "quantity_units": 7
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "GAUGE",
+        "quantity_units": 5
+      },
+      {
+        "week_start": "2027-01-25",
+        "product_id": "LAMP",
+        "quantity_units": 7
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "GAUGE",
+        "quantity_units": 4
+      },
+      {
+        "week_start": "2027-02-01",
+        "product_id": "LAMP",
+        "quantity_units": 4
+      }
+    ],
+    "shipments": [
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-WEST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "route_id": "OUT-WEST",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-WEST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "route_id": "OUT-WEST",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-WEST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "route_id": "OUT-WEST",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-WEST",
+        "quantity_units": 1
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "route_id": "OUT-WEST",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "route_id": "OUT-CENTRAL",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "route_id": "OUT-EAST",
+        "quantity_units": 2
+      }
+    ],
+    "fulfillment": [
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-04",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 1
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-11",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-18",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-01-25",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-01",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "EAST",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "LAMP",
+        "quantity_units": 3
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "WEST",
+        "product_id": "GAUGE",
+        "quantity_units": 1
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "LAMP",
+        "quantity_units": 2
+      },
+      {
+        "week_start": "2027-02-08",
+        "warehouse_id": "CENTRAL",
+        "product_id": "GAUGE",
+        "quantity_units": 2
+      }
+    ],
+    "metadata": {
+      "source": "CBC integer solution",
+      "holding_basis": "moving_average_exact"
+    }
+  },
+  "verification": {
+    "status": "PASS",
+    "quantity_tolerance": 1e-05,
+    "cost_tolerance_usd": 0.001,
+    "checks": [
+      "every purchase, production, shipment and fulfillment decision",
+      "all weekly component, factory and warehouse inventories",
+      "all mathematical constraint residuals",
+      "booked order timing and existing firm receipts via engine audit",
+      "committed objective including pending POs, freight, conversion and configured holding"
+    ],
+    "accounting": {
+      "purchasing_commitments": 225,
+      "inbound_freight_commitments": 23.2,
+      "conversion_cost": 250,
+      "outbound_freight_cost": 30.6,
+      "holding_cost": 6.2153846153846155,
+      "total_committed_modeled_cost": 535.0153846153846,
+      "sunk_firm_commitments": 105.6,
+      "avoidable_modeled_cost": 429.4153846153846,
+      "opening_inventory_sunk_standard_value": 541.2,
+      "terminal_standard_inventory_value": 0,
+      "pending_purchase_and_freight_commitment": 0,
+      "weekly": [
+        {
+          "week_start": "2027-01-04",
+          "on_hand_value": 418.6,
+          "owned_transit_value": 70,
+          "holding_cost": 1.8792307692307693,
+          "fulfilled_cost": 185.2
+        },
+        {
+          "week_start": "2027-01-11",
+          "on_hand_value": 144.8,
+          "owned_transit_value": 255.2,
+          "holding_cost": 1.5384615384615385,
+          "fulfilled_cost": 160.4
+        },
+        {
+          "week_start": "2027-01-18",
+          "on_hand_value": 54.8,
+          "owned_transit_value": 255.2,
+          "holding_cost": 1.1923076923076923,
+          "fulfilled_cost": 185.2
+        },
+        {
+          "week_start": "2027-01-25",
+          "on_hand_value": 9.8,
+          "owned_transit_value": 238.8,
+          "holding_cost": 0.9561538461538461,
+          "fulfilled_cost": 185.2
+        },
+        {
+          "week_start": "2027-02-01",
+          "on_hand_value": 0,
+          "owned_transit_value": 168.8,
+          "holding_cost": 0.6492307692307693,
+          "fulfilled_cost": 185.2
+        },
+        {
+          "week_start": "2027-02-08",
+          "on_hand_value": 0,
+          "owned_transit_value": 0,
+          "holding_cost": 0,
+          "fulfilled_cost": 168.8
+        }
+      ],
+      "holding_basis": "moving_average_exact",
+      "terminal_owned_inventory_value": 0,
+      "inventory_values": [
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 2,
+          "inventory_value": 32.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 2,
+          "inventory_value": 24.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 2,
+          "inventory_value": 32.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 2,
+          "inventory_value": 24.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 2,
+          "inventory_value": 32.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 1,
+          "inventory_value": 12.4,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 13,
+          "inventory_value": 101.4,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-04",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 16,
+          "inventory_value": 156.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 6,
+          "inventory_value": 46.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-11",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 10,
+          "inventory_value": 98,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 2,
+          "inventory_value": 15.6,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-18",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 4,
+          "inventory_value": 39.2,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-01-25",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 1,
+          "inventory_value": 9.8,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-01",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "CENTRAL",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "CENTRAL",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "EAST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "EAST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WEST",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WEST",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WORKS",
+          "item_id": "CELL",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WORKS",
+          "item_id": "GAUGE",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WORKS",
+          "item_id": "LAMP",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        },
+        {
+          "week_start": "2027-02-08",
+          "facility_id": "WORKS",
+          "item_id": "STEEL",
+          "quantity_units": 0,
+          "inventory_value": 0,
+          "prepared_acquisition_value_remaining": 0
+        }
+      ]
+    }
+  },
+  "valuation": {
+    "opening_inventory_proxy_value": 541.2,
+    "committed_purchasing_cost": 225,
+    "committed_inbound_transport_cost": 23.2,
+    "recognized_purchasing_cost": 225,
+    "conversion_cost": 250,
+    "recognized_transportation_cost": 53.8,
+    "committed_transportation_cost": 53.8,
+    "preparation_material_acquisition": 0,
+    "preparation_inbound_acquisition": 0,
+    "preparation_acquisition_cost": 0,
+    "preparation_holding_cost": 0,
+    "horizon_holding_cost": 6.2153846153846155,
+    "total_holding_cost": 6.2153846153846155,
+    "gross_committed_resource_cost": 535.0153846153846,
+    "terminal_owned_inventory_value": 0,
+    "pending_purchase_and_inbound_commitment": 0,
+    "inventory_adjusted_resource_consumption_cost": 1076.2153846153847,
+    "prepared_acquisition_value_remaining": 0,
+    "prepared_acquisition_value_fulfilled": 0,
+    "modeled_fulfilled_cost": 1070,
+    "financial_reconciliation": "PASS",
+    "weekly": [
+      {
+        "week_start": "2027-01-04",
+        "on_hand_value": 418.6,
+        "owned_transit_value": 70,
+        "holding_cost": 1.8792307692307693,
+        "fulfilled_cost": 185.2
+      },
+      {
+        "week_start": "2027-01-11",
+        "on_hand_value": 144.8,
+        "owned_transit_value": 255.2,
+        "holding_cost": 1.5384615384615385,
+        "fulfilled_cost": 160.4
+      },
+      {
+        "week_start": "2027-01-18",
+        "on_hand_value": 54.8,
+        "owned_transit_value": 255.2,
+        "holding_cost": 1.1923076923076923,
+        "fulfilled_cost": 185.2
+      },
+      {
+        "week_start": "2027-01-25",
+        "on_hand_value": 9.8,
+        "owned_transit_value": 238.8,
+        "holding_cost": 0.9561538461538461,
+        "fulfilled_cost": 185.2
+      },
+      {
+        "week_start": "2027-02-01",
+        "on_hand_value": 0,
+        "owned_transit_value": 168.8,
+        "holding_cost": 0.6492307692307693,
+        "fulfilled_cost": 185.2
+      },
+      {
+        "week_start": "2027-02-08",
+        "on_hand_value": 0,
+        "owned_transit_value": 0,
+        "holding_cost": 0,
+        "fulfilled_cost": 168.8
+      }
+    ],
+    "inventory_values": [
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 2,
+        "inventory_value": 32.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 2,
+        "inventory_value": 24.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 2,
+        "inventory_value": 32.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 2,
+        "inventory_value": 24.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 2,
+        "inventory_value": 32.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 1,
+        "inventory_value": 12.4,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 13,
+        "inventory_value": 101.4,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-04",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 16,
+        "inventory_value": 156.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 6,
+        "inventory_value": 46.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-11",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 10,
+        "inventory_value": 98,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 2,
+        "inventory_value": 15.6,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-18",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 4,
+        "inventory_value": 39.2,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-01-25",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 1,
+        "inventory_value": 9.8,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-01",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      }
+    ],
+    "terminal_inventory": [
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "CENTRAL",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "CENTRAL",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "EAST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "EAST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WEST",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WEST",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "CELL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "GAUGE",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "LAMP",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      },
+      {
+        "week_start": "2027-02-08",
+        "facility_id": "WORKS",
+        "item_id": "STEEL",
+        "quantity_units": 0,
+        "inventory_value": 0,
+        "prepared_acquisition_value_remaining": 0
+      }
+    ],
+    "terminal_transfers": []
+  }
+}

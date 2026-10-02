@@ -1,0 +1,11 @@
+item_id,item_name,item_type,uom,selling_price_usd
+C01,Metal frame,component,EA,0
+C02,Laptop platform,component,EA,0
+C03,Monitor shelf,component,EA,0
+C04,Plastic tray,component,EA,0
+C05,Divider insert,component,EA,0
+C06,Packaging kit,component,EA,0
+P01,Laptop stand,finished_good,EA,45
+P02,Double monitor riser,finished_good,EA,70
+P03,Desk organizer,finished_good,EA,30
+P04,Premium desk kit,finished_good,EA,85

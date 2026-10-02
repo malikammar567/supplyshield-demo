@@ -1,0 +1,32 @@
+{
+  "mode": "reactive",
+  "start_week": "2026-10-05",
+  "duration_weeks": 8,
+  "reallocation": [
+    {
+      "component_id": "C01",
+      "from_supplier_id": "S01",
+      "alternate_supplier_ids": [
+        "S02"
+      ]
+    },
+    {
+      "component_id": "C02",
+      "from_supplier_id": "S01",
+      "alternate_supplier_ids": [
+        "S02"
+      ]
+    },
+    {
+      "component_id": "C03",
+      "from_supplier_id": "S01",
+      "alternate_supplier_ids": [
+        "S02"
+      ]
+    }
+  ],
+  "expedited_routes": [],
+  "preparation": null,
+  "assumptions": "Synthetic demonstration; no supplier qualification or capacity is added.",
+  "strategy_id": "alternate_supplier"
+}

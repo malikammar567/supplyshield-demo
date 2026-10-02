@@ -1,0 +1,10 @@
+{
+  "mode": "reactive",
+  "start_week": "2026-10-05",
+  "duration_weeks": 8,
+  "reallocation": [],
+  "expedited_routes": [],
+  "preparation": null,
+  "assumptions": "Synthetic demonstration; no supplier qualification or capacity is added.",
+  "strategy_id": "zero_action"
+}

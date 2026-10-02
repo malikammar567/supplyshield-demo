@@ -1,0 +1,12 @@
+supplier_id,component_id,baseline_share
+S01,C01,0.8
+S02,C01,0.2
+S01,C02,1
+S02,C02,0
+S01,C03,1
+S02,C03,0
+S03,C04,1
+S02,C04,0
+S03,C05,1
+S02,C05,0
+S04,C06,1

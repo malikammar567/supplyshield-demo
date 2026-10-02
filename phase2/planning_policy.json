@@ -1,0 +1,9 @@
+{
+  "policy_version": "1.0",
+  "production_priority": ["P01", "P02", "P03", "P04"],
+  "purchasing_rule": "rolling_inventory_position",
+  "sourcing_rule": "baseline_shares_no_reallocation",
+  "warehouse_allocation_rule": "proportional_largest_remainder",
+  "warehouse_buffer_rule": "replenish_to_safety_target",
+  "purchase_coverage_extra_weeks": 1
+}

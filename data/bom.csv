@@ -1,0 +1,14 @@
+product_id,component_id,quantity_per_product
+P01,C01,1
+P01,C02,1
+P01,C06,1
+P02,C01,1
+P02,C03,2
+P02,C06,1
+P03,C04,1
+P03,C05,1
+P03,C06,1
+P04,C01,1
+P04,C04,1
+P04,C05,2
+P04,C06,1
